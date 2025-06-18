@@ -1,0 +1,68 @@
+{
+  "name": "task-prioritizer",
+  "version": "1.0.0",
+  "description": "Google Calendar 任務排序器",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "dist": "electron-builder --publish=never",
+    "dist-all": "electron-builder -mwl --publish=never",
+    "dist-mac": "electron-builder --mac --publish=never",
+    "dist-win": "electron-builder --win --publish=never",
+    "dist-linux": "electron-builder --linux --publish=never"
+  },
+  "keywords": ["calendar", "task", "prioritizer", "gemini", "electron", "ical"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "electron-store": "^8.1.0"
+  },
+  "build": {
+    "appId": "com.yourcompany.taskprioritizer",
+    "productName": "Task Prioritizer",
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        }
+      ],
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
